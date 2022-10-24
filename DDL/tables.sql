@@ -21,13 +21,13 @@ CREATE TABLE RegisteredUser(
     profilePicUrl  TINYTEXT NOT NULL,
     active         BOOLEAN DEFAULT TRUE NOT NULL,
     createdDate    TIMESTAMP DEFAULT CURRENT_TIMESTAMP() NOT NULL,
-    updatedDate    TIMESTAMP DEFAULT 0 NOT NULL
+    updatedDate    TIMESTAMP NULL
 
 );
 
 CREATE TABLE Manager(
     id          INT UNSIGNED PRIMARY KEY,
-    hiredDate   DATE DEFAULT CURRENT_DATE() NOT NULL,
+    hiredDate   DATE NOT NULL,
     title       VARCHAR(200),
     nameCompany VARCHAR(100) NOT NULL,
 
