@@ -2,8 +2,7 @@ package unipi.eCommerce.model;
 
 public class ShoppingCart {
     private long updatedDate;
-    // TO DO
-    // private Customer customer;
+    private Customer customer;
 
     public ShoppingCart(long updatedDate) {
         this.updatedDate = updatedDate;
