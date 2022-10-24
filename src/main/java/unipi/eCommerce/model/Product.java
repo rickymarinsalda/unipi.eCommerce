@@ -3,6 +3,8 @@ package unipi.eCommerce.model;
 public class Product {
     private String name;
     private String shortDescription;
+    private String description;
+
     private String brand;
     private String imageUrl;
     private double price;
@@ -15,6 +17,18 @@ public class Product {
         this.imageUrl = imageUrl;
         this.price = price;
         this.stock = stock;
+    }
+
+    public Product() {
+
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public String getName() {
