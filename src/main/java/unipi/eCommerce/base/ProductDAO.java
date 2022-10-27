@@ -10,13 +10,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ProductDAO extends ConnectionFactory {
-    private static int productsPerPage = 20;
-    private static String query = "SELECT name, shortDescription, description, brand, imageUrl, price, stock FROM Product LIMIT ? OFFSET ?";
+    private static final int productsPerPage = 2;
+    private static final String query = "SELECT name, shortDescription, description, brand, imageUrl, price, stock FROM Product LIMIT ? OFFSET ?";
 
     public List<Product> listProducts(int page) throws SQLException
     {
         if(page <= 0)
             throw new RuntimeException("page > 0 grullo");
+
+        page--;
 
         try (Connection connection = super.getConnection())
         {
