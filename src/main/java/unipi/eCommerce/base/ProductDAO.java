@@ -12,7 +12,22 @@ import java.util.List;
 public class ProductDAO extends ConnectionFactory {
     private static final int productsPerPage = 2;
     private static final String query = "SELECT name, shortDescription, description, brand, imageUrl, price, stock FROM Product LIMIT ? OFFSET ?";
-    private static String query2 = "SELECT name, shortDescription, description, brand, imageUrl, price, stock FROM Product WHERE name = ?";
+    private static final String query2 = "SELECT name, shortDescription, description, brand, imageUrl, price, stock FROM Product WHERE name = ?";
+
+    private static Product createFromTuple(ResultSet resultSet) throws SQLException
+    {
+        Product product = new Product();
+        product.setName(resultSet.getString(1));
+        product.setShortDescription(resultSet.getString(2));
+        product.setDescription(resultSet.getString(3));
+        product.setBrand(resultSet.getString(4));
+        product.setImageUrl(resultSet.getString(5));
+        product.setPrice(resultSet.getDouble(6));
+        product.setStock(resultSet.getInt(7));
+
+        return product;
+    }
+
     public List<Product> listProducts(int page) throws SQLException
     {
         if(page <= 0)
@@ -30,18 +45,8 @@ public class ProductDAO extends ConnectionFactory {
 
             List<Product> products = new ArrayList<>(productsPerPage);
             while(resultSet.next())
-            {
-                Product product = new Product();
-                product.setName(resultSet.getString(1));
-                product.setShortDescription(resultSet.getString(2));
-                product.setDescription(resultSet.getString(3));
-                product.setBrand(resultSet.getString(4));
-                product.setImageUrl(resultSet.getString(5));
-                product.setPrice(resultSet.getDouble(6));
-                product.setStock(resultSet.getInt(7));
+                products.add(createFromTuple(resultSet));
 
-                products.add(product);
-            }
             return products;
         }
     }
@@ -58,16 +63,7 @@ public class ProductDAO extends ConnectionFactory {
             if(!resultSet.isBeforeFirst())
                 return null;
 
-            Product foundProduct = new Product();
-            foundProduct.setName(resultSet.getString(1));
-            foundProduct.setShortDescription(resultSet.getString(2));
-            foundProduct.setDescription(resultSet.getString(3));
-            foundProduct.setBrand(resultSet.getString(4));
-            foundProduct.setImageUrl(resultSet.getString(5));
-            foundProduct.setPrice(resultSet.getDouble(6));
-            foundProduct.setStock(resultSet.getInt(7));
-
-            return foundProduct;
+            return createFromTuple(resultSet);
         }
 
     }
