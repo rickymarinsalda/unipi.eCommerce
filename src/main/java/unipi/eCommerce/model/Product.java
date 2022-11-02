@@ -19,8 +19,19 @@ public class Product {
         this.stock = stock;
     }
 
-    public Product() {
+    public Product() {}
 
+    @Override
+    public String toString() {
+        return "Product{" +
+                "name='" + name + '\'' +
+                ", shortDescription='" + shortDescription + '\'' +
+                ", description='" + description + '\'' +
+                ", brand='" + brand + '\'' +
+                ", imageUrl='" + imageUrl + '\'' +
+                ", price=" + price +
+                ", stock=" + stock +
+                '}';
     }
 
     public String getDescription() {

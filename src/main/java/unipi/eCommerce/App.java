@@ -20,7 +20,7 @@ public class App
         Scanner sc=new Scanner(System.in);
         while(true)
         {
-            System.out.println("Insert page number: ");
+            System.out.print("Insert page number: ");
             System.out.flush();
             int page = sc.nextInt();
             List<Product> products = pdao.listProducts(page);
@@ -28,6 +28,19 @@ public class App
             products.forEach(product -> {
                 System.out.println(product.getName());
             });
+
+            do {
+                System.out.print("Show product's detail of (insert -1 to skip): ");
+
+                System.out.flush();
+                int index = sc.nextInt();
+
+                if (index == -1 || index >= products.size())
+                    break;
+
+                System.out.println(products.get(index));
+            }
+            while(true);
         }
     }
 }
