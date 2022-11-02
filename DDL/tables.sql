@@ -64,7 +64,27 @@ CREATE TABLE Product(
     brand               TINYTEXT NOT NULL,
     imageUrl            TINYTEXT NOT NULL,
     price               DOUBLE NOT NULL,
-    stock               INT NOT NULL
+    stock               INT NOT NULL,
+
+    -- Generalazziozne
+    class               ENUM('Beer', 'Book', 'Monitor'),
+
+    -- Beer
+    ingredients         TEXT NULL           CHECK ((class = 'Beer') = (ingredients IS NOT NULL)),
+    alcoholPercentage   DOUBLE NULL         CHECK ((class = 'Beer') = (alcoholPercentage IS NOT NULL)),
+    liquidVolumeInML    DOUBLE NULL         CHECK ((class = 'Beer') = (liquidVolumeInML IS NOT NULL)),
+
+    -- Book
+    summary         MEDIUMTEXT NULL         CHECK ((class = 'Book') = (summary IS NOT NULL)),
+    language        VARCHAR(50) NULL        CHECK ((class = 'Book') = (language IS NOT NULL)),
+    numberPages     INT NULL                CHECK ((class = 'Book') = (numberPages IS NOT NULL)),
+
+    -- Monitor
+    screenSizeInches    DOUBLE NULL         CHECK ((class = 'Monitor') = (screenSizeInches IS NOT NULL)),
+    displayResolutionX  INT UNSIGNED NULL   CHECK ((class = 'Monitor') = (displayResolutionX IS NOT NULL)),
+    displayResolutionY  INT UNSIGNED NULL   CHECK ((class = 'Monitor') = (displayResolutionY IS NOT NULL)),
+    specialFeatures     MEDIUMTEXT NULL     CHECK ((class = 'Monitor') = (specialFeatures IS NOT NULL)),
+    refreshRateHz       DOUBLE NULL         CHECK ((class = 'Monitor') = (refreshRateHz IS NOT NULL))
 );
 
 CREATE TABLE ProductDetail(
@@ -77,33 +97,3 @@ CREATE TABLE ProductDetail(
     FOREIGN KEY (nameProduct) REFERENCES `Product`(`name`),
     PRIMARY KEY(orderNumber,nameProduct)
 );
-
-CREATE TABLE Beer(
-    nameProduct         CHAR(100) PRIMARY KEY,
-    ingredients         TEXT NOT NULL,
-    alcoholPercentage   DOUBLE NOT NULL,
-    liquidVolumeInML    DOUBLE NOT NULL,
-
-    FOREIGN KEY (nameProduct) REFERENCES Product(name)
-);
-
-CREATE TABLE Book(
-    nameProduct     VARCHAR(100) PRIMARY KEY,
-    summary         MEDIUMTEXT NOT NULL,
-    language        VARCHAR(50) NOT NULL,
-    numberPages     INT NOT NULL,
-
-    FOREIGN KEY (nameProduct) REFERENCES Product(name)
-);
-
-CREATE TABLE Monitor(
-    nameProduct         VARCHAR(100) PRIMARY KEY,
-    screenSizeInches    DOUBLE NOT NULL,
-    displayResolutionX  INT UNSIGNED NOT NULL,
-    displayResolutionY  INT UNSIGNED NOT NULL,
-    specialFeatures     MEDIUMTEXT NOT NULL,
-    refreshRateHz       DOUBLE NOT NULL,
-
-    FOREIGN KEY (nameProduct) REFERENCES Product(name)
-);
-
