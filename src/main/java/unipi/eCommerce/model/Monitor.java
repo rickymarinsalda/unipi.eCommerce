@@ -1,5 +1,6 @@
 package unipi.eCommerce.model;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class Monitor extends Product{
@@ -7,6 +8,8 @@ public class Monitor extends Product{
     private int[] displayResolution;
     private List<String> specialFeatures;
     private double refreshRateHz;
+
+    public Monitor() {};
 
     public Monitor(String name, String shortDescription, String brand, String imageUrl, double price, int stock, double screenSizeInches, int[] displayResolution, List<String> specialFeatures, double refreshRateHz) {
         super(name, shortDescription, brand, imageUrl, price, stock);
@@ -46,5 +49,16 @@ public class Monitor extends Product{
 
     public void setRefreshRateHz(double refreshRateHz) {
         this.refreshRateHz = refreshRateHz;
+    }
+
+    @Override
+    public String toString() {
+        return "Monitor{" +
+                "screenSizeInches=" + screenSizeInches +
+                ", displayResolution=" + Arrays.toString(displayResolution) +
+                ", specialFeatures=" + specialFeatures +
+                ", refreshRateHz=" + refreshRateHz +
+                ", product=" + super.toString() +
+                '}';
     }
 }

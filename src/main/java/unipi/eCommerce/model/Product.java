@@ -1,6 +1,6 @@
 package unipi.eCommerce.model;
 
-public class Product {
+public abstract class Product {
     private String name;
     private String shortDescription;
     private String description;

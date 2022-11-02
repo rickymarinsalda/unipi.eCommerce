@@ -7,6 +7,8 @@ public class Beer extends Product{
     private double alcholPercentage;
     private double liquidVolumeInML;
 
+    public Beer() {}
+
     public Beer(String name, String shortDescription, String brand, String imageUrl, double price, int stock, List<String> ingredients, double alcholPercentage, double liquidVolumeInML) {
         super(name, shortDescription, brand, imageUrl, price, stock);
         this.ingredients = ingredients;
@@ -36,5 +38,15 @@ public class Beer extends Product{
 
     public void setLiquidVolumeInML(double liquidVolumeInML) {
         this.liquidVolumeInML = liquidVolumeInML;
+    }
+
+    @Override
+    public String toString() {
+        return "Beer{" +
+                "ingredients=" + ingredients +
+                ", alcholPercentage=" + alcholPercentage +
+                ", liquidVolumeInML=" + liquidVolumeInML +
+                ", product= " + super.toString() +
+                '}';
     }
 }

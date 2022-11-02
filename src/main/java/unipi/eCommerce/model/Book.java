@@ -5,6 +5,7 @@ public class Book extends Product{
     private String language;
     private int numberPages;
 
+    public Book() {}
 
     public Book(String name, String shortDescription, String brand, String imageUrl, double price, int stock, String summery, String language, int numberPages) {
         super(name, shortDescription, brand, imageUrl, price, stock);
@@ -17,7 +18,7 @@ public class Book extends Product{
         return summery;
     }
 
-    public void setSummery(String summery) {
+    public void setSummary(String summery) {
         this.summery = summery;
     }
 
@@ -33,7 +34,17 @@ public class Book extends Product{
         return numberPages;
     }
 
-    public void setNumberPages(int numberPages) {
+    public void setNumberOfPages(int numberPages) {
         this.numberPages = numberPages;
+    }
+
+    @Override
+    public String toString() {
+        return "Book{" +
+                "summery='" + summery + '\'' +
+                ", language='" + language + '\'' +
+                ", numberPages=" + numberPages +
+                ", product=" + super.toString() +
+                '}';
     }
 }
