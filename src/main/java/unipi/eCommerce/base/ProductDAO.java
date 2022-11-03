@@ -14,8 +14,8 @@ import java.util.List;
 
 public class ProductDAO extends ConnectionFactory {
     private static final int productsPerPage = 2;
-    private static final String query = "SELECT name, shortDescription, description, brand, imageUrl, price, stock, class, ingredients, alcoholPercentage, liquidVolumeInML, liquidVolumeInML, summary, language, numberPages, screenSizeInches, displayResolutionX, displayResolutionY, specialFeatures, refreshRateHz FROM Product LIMIT ? OFFSET ?";
-    private static final String query2 = "SELECT name, shortDescription, description, brand, imageUrl, price, stock, class, ingredients, alcoholPercentage, liquidVolumeInML, liquidVolumeInML, summary, language, numberPages, screenSizeInches, displayResolutionX, displayResolutionY, specialFeatures, refreshRateHz FROM Product WHERE name = ?";
+    private static final String query = "SELECT name, shortDescription, description, brand, imageUrl, price, stock, class, ingredients, alcoholPercentage, liquidVolumeInML, liquidVolumeInML, summary, `language`, numberPages, screenSizeInches, displayResolutionX, displayResolutionY, specialFeatures, refreshRateHz FROM Product LIMIT ? OFFSET ?";
+    private static final String query2 = "SELECT name, shortDescription, description, brand, imageUrl, price, stock, class, ingredients, alcoholPercentage, liquidVolumeInML, liquidVolumeInML, summary, `language`, numberPages, screenSizeInches, displayResolutionX, displayResolutionY, specialFeatures, refreshRateHz FROM Product WHERE name = ?";
 
     private static Product createFromTuple(ResultSet resultSet) throws SQLException
     {
@@ -99,6 +99,7 @@ public class ProductDAO extends ConnectionFactory {
             if(!resultSet.isBeforeFirst())
                 return null;
 
+            resultSet.next();
             return createFromTuple(resultSet);
         }
     }

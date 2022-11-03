@@ -9,9 +9,11 @@ public class RegisteredUser {
     private long createdDate;
     private long updatedDate;
 
+    private String password;
+
     public RegisteredUser() {};
 
-    public RegisteredUser(String firstName, String lastName, String username, String profilePicURL, boolean active, long createdDate, long updatedDate) {
+    public RegisteredUser(String firstName, String lastName, String username, String profilePicURL, boolean active, long createdDate, long updatedDate, String password) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.username = username;
@@ -19,6 +21,15 @@ public class RegisteredUser {
         this.active = active;
         this.createdDate = createdDate;
         this.updatedDate = updatedDate;
+        this.password = password;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getFirstName() {

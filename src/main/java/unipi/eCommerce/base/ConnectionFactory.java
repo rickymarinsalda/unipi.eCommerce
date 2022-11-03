@@ -1,5 +1,7 @@
 package unipi.eCommerce.base;
 
+import redis.clients.jedis.Jedis;
+
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Properties;
@@ -20,5 +22,13 @@ public class ConnectionFactory {
         properties.put("zeroDateTimeBehavior", "CONVERT_TO_NULL");
         properties.put("serverTimeZone","CET");
         return DriverManager.getConnection(jdbcUrl, properties);
+    }
+
+    private static final String JEDIS_URL = "localhost";
+    private static final int JEDIS_PORT = 6379;
+
+    public Jedis getJedisConnection()
+    {
+        return new Jedis(JEDIS_URL, JEDIS_PORT);
     }
 }

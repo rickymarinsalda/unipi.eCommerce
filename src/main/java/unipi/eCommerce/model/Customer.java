@@ -5,8 +5,8 @@ public class Customer extends RegisteredUser{
     private String country;
     private String phone;
 
-    public Customer(String firstName, String lastName, String username, String profilePicURL, boolean active, long createdDate, long updatedDate, String address, String country, String phone) {
-        super(firstName, lastName, username, profilePicURL, active, createdDate, updatedDate);
+    public Customer(String firstName, String lastName, String username, String profilePicURL, boolean active, long createdDate, long updatedDate, String password, String address, String country, String phone) {
+        super(firstName, lastName, username, profilePicURL, active, createdDate, updatedDate, password);
         this.address = address;
         this.country = country;
         this.phone = phone;

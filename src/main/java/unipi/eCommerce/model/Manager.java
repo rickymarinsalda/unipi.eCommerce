@@ -6,8 +6,8 @@ public class Manager extends  RegisteredUser{
     private Date hiredDate;
     private String title;
 
-    public Manager(String firstName, String lastName, String username, String profilePicURL, boolean active, long createdDate, long updatedDate, Date hiredDate, String title) {
-        super(firstName, lastName, username, profilePicURL, active, createdDate, updatedDate);
+    public Manager(String firstName, String lastName, String username, String profilePicURL, boolean active, long createdDate, long updatedDate, String password, Date hiredDate, String title) {
+        super(firstName, lastName, username, profilePicURL, active, createdDate, updatedDate, password);
         this.hiredDate = hiredDate;
         this.title = title;
     }
