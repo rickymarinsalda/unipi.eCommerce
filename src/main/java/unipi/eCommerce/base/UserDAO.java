@@ -1,5 +1,12 @@
 package unipi.eCommerce.base;
 
+import unipi.eCommerce.model.RegisteredUser;
+
 public class UserDAO {
-    private static String query = "SELECT id, firstName, lastName, username, password,profilePicUrl,active, createdDate,updatedDate FROM RegisteredUser WHERE username = ?";
+    // id, firstName, lastName, username, password,profilePicUrl,active, createdDate,updatedDate
+    private static final String query = "INSERT INTO RegisteredUser(id, firstName, lastName, username, password,profilePicUrl,active, createdDate,updatedDate)VALUES(?,?,?,?,?,?,?,?,?)";
+
+    public void insertUser(RegisteredUser registeredUser){
+
+    }
 }
